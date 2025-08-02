@@ -1,0 +1,23 @@
+{
+  "name": "mfe-szenario",
+  "version": "1.0.0",
+  "description": "",
+  "main": "metrics.js",
+  "scripts": {
+    "metrics": "node metrics.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christianhegedues/mfe-szenario.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/christianhegedues/mfe-szenario/issues"
+  },
+  "homepage": "https://github.com/christianhegedues/mfe-szenario#readme",
+  "dependencies": {
+    "plato": "^1.7.0"
+  }
+}
