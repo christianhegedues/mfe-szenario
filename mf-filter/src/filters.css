@@ -1,0 +1,10 @@
+.filters {
+  display: grid;
+  gap: 1rem;
+}
+
+.filters__list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
