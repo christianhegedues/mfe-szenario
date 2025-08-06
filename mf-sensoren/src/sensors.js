@@ -35,6 +35,10 @@ const Sensors = defineComponent({
       sensors.value = data.map((sensor) => {
         return new Sensor(sensor);
       });
+
+      window.eventBus.subscribe('filtersChanged', ({ filters }) => {
+        queries.value = filters;
+      });
     });
 
     return {

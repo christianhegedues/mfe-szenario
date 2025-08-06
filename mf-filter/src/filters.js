@@ -24,6 +24,10 @@ const Filters = defineComponent({
       if (newFav) {
         filters.favorite = newFav;
       }
+
+      window.eventBus.publish('filtersChanged', {
+        filters,
+      });
     });
 
     return {
