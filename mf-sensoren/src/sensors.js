@@ -1,4 +1,4 @@
-import { computed, createApp, defineComponent, unref, ref, onMounted } from 'vue';
+import { computed, createApp, defineComponent, unref, ref, onMounted, onBeforeUnmount } from 'vue';
 import { Sensor } from './models/sensor.js';
 import { data } from './data.js';
 import template from './sensors.html.js';
@@ -31,10 +31,20 @@ const Sensors = defineComponent({
       });
     });
 
+    function filtersChanged(event) {
+      queries.value = event.detail.filters;
+    }
+
     onMounted(() => {
       sensors.value = data.map((sensor) => {
         return new Sensor(sensor);
       });
+
+      window.addEventListener('filtersChanged', filtersChanged);
+    });
+
+    onBeforeUnmount(() => {
+      window.removeEventListener('filtersChanged', filtersChanged);
     });
 
     return {

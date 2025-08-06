@@ -24,6 +24,12 @@ const Filters = defineComponent({
       if (newFav) {
         filters.favorite = newFav;
       }
+
+      window.dispatchEvent(new CustomEvent('filtersChanged', {
+        detail: {
+          filters
+        }
+      }));
     });
 
     return {
