@@ -31,6 +31,11 @@ const Sensors = defineComponent({
       });
     });
 
+    const channel = new BroadcastChannel('filters');
+    channel.onmessage = (event) => {
+      queries.value = event.data;
+    };
+
     onMounted(() => {
       sensors.value = data.map((sensor) => {
         return new Sensor(sensor);

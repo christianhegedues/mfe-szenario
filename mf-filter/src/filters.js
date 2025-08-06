@@ -9,21 +9,24 @@ const Filters = defineComponent({
     const status = ref([]);
     const kind = ref([]);
     const favorite = ref();
+    const channel = new BroadcastChannel('filters');
 
     watch([status, kind, favorite], ([newStatus, newKind, newFav]) => {
       const filters = {};
 
       if (newStatus.length) {
-        filters.status = newStatus;
+        filters.status = [...newStatus];
       }
 
       if (newKind.length) {
-        filters.kind = newKind;
+        filters.kind = [...newKind];
       }
 
       if (newFav) {
         filters.favorite = newFav;
       }
+
+      channel.postMessage(filters);
     });
 
     return {
