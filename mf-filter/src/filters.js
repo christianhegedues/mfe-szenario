@@ -14,16 +14,20 @@ const Filters = defineComponent({
       const filters = {};
 
       if (newStatus.length) {
-        filters.status = newStatus;
+        filters.status = [...newStatus];
       }
 
       if (newKind.length) {
-        filters.kind = newKind;
+        filters.kind = [...newKind];
       }
 
       if (newFav) {
         filters.favorite = newFav;
       }
+
+      const channel = new BroadcastChannel('filters');
+      channel.postMessage(filters);
+      channel.close();
     });
 
     return {
