@@ -24,6 +24,9 @@ const Filters = defineComponent({
       if (newFav) {
         filters.favorite = newFav;
       }
+
+      const filterEvent = new CustomEvent('filtersChanged', { detail: { filters } });
+      window.dispatchEvent(filterEvent);
     });
 
     return {
